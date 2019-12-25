@@ -8,6 +8,12 @@ if (!function_exists('auth')) {
      */
     function auth($guard = null)
     {
-        return make(\Fx\HyperfHttpAuth\Contract\HttpAuthContract::class, [$guard]);
+        $auth = make(\Fx\HyperfHttpAuth\Contract\HttpAuthContract::class);
+
+        if (is_null($guard)) {
+            return $auth;
+        }
+
+        return $auth->guard($guard);
     }
 }
