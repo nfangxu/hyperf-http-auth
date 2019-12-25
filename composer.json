@@ -10,7 +10,10 @@
     "autoload": {
         "psr-4": {
             "Fx\\HyperfHttpAuth\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -23,13 +26,19 @@
         "hyperf/cache": "1.1.*",
         "hyperf/utils": "1.1.*",
         "hyperf/framework": "1.1.*",
-        "hyperf/di": "1.1.*"
+        "hyperf/di": "1.1.*",
+        "fx/eloquent-provider": "*",
+        "fx/session-guard": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
         "phpstan/phpstan": "^0.10.5",
         "hyperf/testing": "1.1.*",
         "swoft/swoole-ide-helper": "dev-master"
+    },
+    "suggest": {
+        "fx/eloquent-provider": "use eloquent user provider",
+        "fx/session-guard": "use session guard provider"
     },
     "config": {
         "sort-packages": true
