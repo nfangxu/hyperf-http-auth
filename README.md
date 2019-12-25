@@ -4,9 +4,9 @@
 
 - 将 UserProvider 与 Guard 抽离出去, 形成单独扩展包, 方便扩展, 默认使用以下组合
 
-    * `fx/eloquent-provider` 使用 Eloquent ORM ;
+    * [fx/eloquent-provider](https://github.com/nfangxu/hyperf-auth-eloquent-provider) 使用 Eloquent ORM ;
 
-    * `fx/session-guard` 使用 session 作为 guard ;
+    * [fx/session-guard](https://github.com/nfangxu/hyperf-auth-session-guard) 使用 session 作为 guard ;
 
 ## 使用
 ### 安装
