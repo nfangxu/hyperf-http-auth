@@ -1,6 +1,6 @@
 # Hyperf 下 http 认证组件
 
-- 仿照 laravel auth 组件, 抽离出其中的核心组件, 形成当前扩展包
+- 仿照 laravel auth 组件, 抽离出其中的核心逻辑, 形成当前扩展包
 
 - 将 UserProvider 与 Guard 抽离出去, 形成单独扩展包, 方便扩展, 默认使用以下组合
 
