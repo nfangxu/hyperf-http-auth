@@ -12,11 +12,6 @@ class HttpAuthManage implements HttpAuthContract
 {
     use CreatesUserProviders, ContextHelpers;
 
-    /**
-     * @var \Closure
-     */
-    protected $userResolver;
-
     public function __construct()
     {
         // var_dump(Config::annotations());
@@ -50,14 +45,9 @@ class HttpAuthManage implements HttpAuthContract
         });
     }
 
-    public function getDefaultDriver()
-    {
-        return Config::get('defaults.guard');
-    }
-
     protected function resolve($name)
     {
-        $config = $this->getConfig($name);
+        $config = config("http-auth.guards.{$name}");
 
         if (is_null($config)) {
             throw new InvalidArgumentException("Auth guard [{$name}] is not defined.");
@@ -96,14 +86,14 @@ class HttpAuthManage implements HttpAuthContract
         return $this;
     }
 
-    protected function getConfig($name)
-    {
-        return Config::get("guards.{$name}");
-    }
-
     public function setDefaultDriver($name)
     {
-        Config::set('defaults.guard', $name);
+        $this->setContext('defaults.guard', $name);
+    }
+
+    public function getDefaultDriver()
+    {
+        return $this->getContext('defaults.guard') ?: config('http-auth.defaults.guard');
     }
 
     public function __call($method, $parameters)

@@ -43,7 +43,7 @@ trait CreatesUserProviders
     protected function getProviderConfiguration($provider)
     {
         if ($provider = $provider ?: $this->getDefaultUserProvider()) {
-            return Config::get('providers.' . $provider);
+            return config('http-auth.providers.' . $provider);
         }
     }
 
@@ -54,6 +54,6 @@ trait CreatesUserProviders
      */
     public function getDefaultUserProvider()
     {
-        return Config::get('defaults.provider');
+        return config('http-auth.defaults.provider');
     }
 }
