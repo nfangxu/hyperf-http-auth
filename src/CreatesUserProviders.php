@@ -25,7 +25,7 @@ trait CreatesUserProviders
         $driver = ($config['driver'] ?? null);
 
         if ($class = Config::getAnnotation($driver, UserProvider::class)) {
-            error_log("Use User Provider: [{$class}]");
+            // error_log("Use User Provider: [{$class}]");
             return make($class, [$config]);
         } else {
             throw new InvalidArgumentException(

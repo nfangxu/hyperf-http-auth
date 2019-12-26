@@ -45,9 +45,9 @@ class HttpAuthManage implements HttpAuthContract
 
         $this->setDefaultDriver($name);
 
-        $this->userResolver = function ($name = null) {
+        $this->resolveUsersUsing(function ($name = null) {
             return $this->guard($name)->user();
-        };
+        });
     }
 
     public function getDefaultDriver()
@@ -64,13 +64,36 @@ class HttpAuthManage implements HttpAuthContract
         }
 
         if ($class = Config::getAnnotation($config['driver'] ?? '', Guard::class)) {
-            error_log("Use Guard: [{$class}]");
+            // error_log("Use Guard: [{$class}]");
             return make($class, [$config, $this->createUserProvider($config['provider'] ?? null)]);
         } else {
             throw new InvalidArgumentException(
                 "Auth driver [{$config['driver']}] for guard [{$name}] is not defined."
             );
         }
+    }
+
+    /**
+     * Get the user resolver callback.
+     *
+     * @return \Closure
+     */
+    public function userResolver()
+    {
+        return $this->getContext('userResolver');
+    }
+
+    /**
+     * Set the callback to be used to resolve users.
+     *
+     * @param \Closure $userResolver
+     * @return $this
+     */
+    public function resolveUsersUsing(\Closure $userResolver)
+    {
+        $this->setContext('userResolver', $userResolver);
+
+        return $this;
     }
 
     protected function getConfig($name)

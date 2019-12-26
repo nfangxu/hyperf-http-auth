@@ -119,3 +119,7 @@ class IndexController extends AbstractController
 - 添加 `Fx\HyperfHttpAuth\Annotation\GuardAnnotation` 类注解, 该注解接收一个参数, 为该驱动的名称
 
 - 可参考: [fx/session-guard](https://github.com/nfangxu/hyperf-auth-session-guard)
+
+## 更新说明
+
+- 2019-12-26: 添加 `Fx\HyperfHttpAuth\AuthenticateMiddleware` 中间件, 未认证通过会抛出 `Fx\HyperfHttpAuth\Exception\AuthenticationException`
