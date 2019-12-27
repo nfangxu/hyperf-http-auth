@@ -14,6 +14,8 @@ namespace Fx\HyperfHttpAuth\Contract;
 
 interface UserProvider
 {
+    public function __construct($config);
+
     /**
      * Retrieve a user by their unique identifier.
      *
