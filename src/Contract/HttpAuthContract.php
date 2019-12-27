@@ -1,19 +1,27 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth\Contract;
 
 /**
- * Interface HttpAuthContract
- * @package Fx\HyperfHttpAuth\Contract
+ * Interface HttpAuthContract.
  *
  * @method bool check()
  * @method bool guest()
  *
  * @see \Fx\HyperfHttpAuth\Contract\Guard
- * @method \Fx\HyperfHttpAuth\Contract\Authenticatable|null user()
- * @method int|string|null id()
- * @method string|null name()
+ * @method null|\Fx\HyperfHttpAuth\Contract\Authenticatable user()
+ * @method null|int|string id()
+ * @method null|string name()
  * @method bool validate(array $credentials = [])
  * @method setUser(\Fx\HyperfHttpAuth\Contract\Authenticatable $user)
  *
@@ -29,14 +37,13 @@ namespace Fx\HyperfHttpAuth\Contract;
 interface HttpAuthContract
 {
     /**
-     * @param string|null $name
+     * @param null|string $name
      * @return \Fx\HyperfHttpAuth\Contract\Guard
      */
     public function guard($name = null): Guard;
 
     /**
      * @param string $name
-     * @return void
      */
     public function shouldUse($name);
 }

@@ -1,5 +1,14 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
@@ -45,12 +54,12 @@ trait Authenticatable
     /**
      * Get the token value for the "remember me" session.
      *
-     * @return string|null
+     * @return null|string
      */
     public function getRememberToken()
     {
-        if (!empty($this->getRememberTokenName())) {
-            return (string)$this->{$this->getRememberTokenName()};
+        if (! empty($this->getRememberTokenName())) {
+            return (string) $this->{$this->getRememberTokenName()};
         }
     }
 
@@ -58,11 +67,10 @@ trait Authenticatable
      * Set the token value for the "remember me" session.
      *
      * @param string $value
-     * @return void
      */
     public function setRememberToken($value)
     {
-        if (!empty($this->getRememberTokenName())) {
+        if (! empty($this->getRememberTokenName())) {
             $this->{$this->getRememberTokenName()} = $value;
         }
     }

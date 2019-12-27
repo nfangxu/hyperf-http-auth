@@ -1,5 +1,14 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
@@ -18,7 +27,6 @@ class Recaller
      * Create a new recaller instance.
      *
      * @param string $recaller
-     * @return void
      */
     public function __construct($recaller)
     {
@@ -87,4 +95,3 @@ class Recaller
         return count($segments) === 3 && trim($segments[0]) !== '' && trim($segments[1]) !== '';
     }
 }
-

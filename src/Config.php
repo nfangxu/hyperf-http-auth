@@ -1,14 +1,19 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
-use Hyperf\Utils\Context;
-use Hyperf\Di\Annotation\AnnotationCollector;
-
 /**
- * Class Config
- * @package Fx\HyperfHttpAuth
+ * Class Config.
  */
 class Config
 {
@@ -21,7 +26,6 @@ class Config
      * @param string $name
      * @param string $value
      * @param string $abstract
-     * @return void
      */
     public static function setAnnotation($name, $value, $abstract)
     {
@@ -31,11 +35,11 @@ class Config
     /**
      * @param $name
      * @param $abstract
-     * @return mixed|null
+     * @return string
      */
     public static function getAnnotation($name, $abstract)
     {
-        return self::$annotations[$abstract][$name] ?? null;
+        return self::$annotations[$abstract][$name] ?? '';
     }
 
     /**

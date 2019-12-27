@@ -1,5 +1,14 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
@@ -32,14 +41,16 @@ class RateLimiter
     public function hit($key, $decaySeconds = 60)
     {
         $this->cache->set(
-            $key . ':timer', $this->availableAt($decaySeconds), $decaySeconds
+            $key . ':timer',
+            $this->availableAt($decaySeconds),
+            $decaySeconds
         );
 
         $added = $this->cache->set($key, 0, $decaySeconds);
 
-        $hits = (int)$this->cache->get($key);
+        $hits = (int) $this->cache->get($key);
 
-        if (!$added && $hits == 1) {
+        if (! $added && $hits == 1) {
             $this->cache->set($key, 1, $decaySeconds);
         }
 

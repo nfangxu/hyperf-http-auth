@@ -1,13 +1,22 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
 use Fx\HyperfHttpAuth\Exception\AuthenticationException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 class AuthenticateMiddleware implements MiddlewareInterface
@@ -24,8 +33,9 @@ class AuthenticateMiddleware implements MiddlewareInterface
 
     /**
      * AuthenticateMiddleware constructor.
+     *
      * @param ContainerInterface $container
-     * @param HttpAuthContract $auth
+     * @param Contract\HttpAuthContract $auth
      */
     public function __construct(ContainerInterface $container, Contract\HttpAuthContract $auth)
     {
@@ -33,11 +43,6 @@ class AuthenticateMiddleware implements MiddlewareInterface
         $this->auth = $auth;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     * @return ResponseInterface
-     */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $this->authenticate($request, $this->guards());
@@ -45,10 +50,6 @@ class AuthenticateMiddleware implements MiddlewareInterface
         return $handler->handle($request);
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param array $guards
-     */
     protected function authenticate(ServerRequestInterface $request, array $guards)
     {
         if (empty($guards)) {
@@ -64,9 +65,6 @@ class AuthenticateMiddleware implements MiddlewareInterface
         throw new AuthenticationException('Unauthenticated.', $guards);
     }
 
-    /**
-     * @return array
-     */
     protected function guards(): array
     {
         return [];

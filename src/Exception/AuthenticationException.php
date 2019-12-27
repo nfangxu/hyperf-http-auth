@@ -1,8 +1,16 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth\Exception;
-
 
 use Hyperf\Server\Exception\ServerException;
 
@@ -19,9 +27,7 @@ class AuthenticationException extends ServerException
      * Create a new authentication exception.
      *
      * @param string $message
-     * @param array $guards
-     * @param string|null $redirectTo
-     * @return void
+     * @param null|string $redirectTo
      */
     public function __construct($message = 'Unauthenticated.', array $guards = [])
     {

@@ -1,16 +1,24 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth\Contract;
 
-use Fx\HyperfHttpAuth\Contract\Authenticatable;
-
 interface StatefulGuard extends Guard
 {
+    public function __construct($config, UserProvider $provider);
+
     /**
      * Attempt to authenticate a user using the given credentials.
      *
-     * @param array $credentials
      * @param bool $remember
      * @return bool
      */
@@ -19,7 +27,6 @@ interface StatefulGuard extends Guard
     /**
      * Log a user into the application without sessions or cookies.
      *
-     * @param array $credentials
      * @return bool
      */
     public function once(array $credentials = []);
@@ -27,9 +34,7 @@ interface StatefulGuard extends Guard
     /**
      * Log a user into the application.
      *
-     * @param \Fx\HyperfHttpAuth\Contract\Authenticatable $user
      * @param bool $remember
-     * @return void
      */
     public function login(Authenticatable $user, $remember = false);
 
@@ -59,8 +64,6 @@ interface StatefulGuard extends Guard
 
     /**
      * Log the user out of the application.
-     *
-     * @return void
      */
     public function logout();
 }

@@ -1,5 +1,14 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth;
 
@@ -26,17 +35,16 @@ trait GuardHelpers
     /**
      * Determine if current user is authenticated. If not, throw an exception.
      *
-     * @return \Fx\HyperfHttpAuth\Contract\Authenticatable
-     *
      * @throws \Fx\HyperfHttpAuth\Exception\AuthenticationException
+     * @return \Fx\HyperfHttpAuth\Contract\Authenticatable
      */
     public function authenticate()
     {
-        if (!is_null($user = $this->user())) {
+        if (! is_null($user = $this->user())) {
             return $user;
         }
 
-        throw new AuthenticationException;
+        throw new AuthenticationException();
     }
 
     /**
@@ -46,7 +54,7 @@ trait GuardHelpers
      */
     public function hasUser()
     {
-        return !is_null($this->user);
+        return ! is_null($this->user);
     }
 
     /**
@@ -56,7 +64,7 @@ trait GuardHelpers
      */
     public function check()
     {
-        return !is_null($this->user());
+        return ! is_null($this->user());
     }
 
     /**
@@ -66,13 +74,13 @@ trait GuardHelpers
      */
     public function guest()
     {
-        return !$this->check();
+        return ! $this->check();
     }
 
     /**
      * Get the ID for the currently authenticated user.
      *
-     * @return int|null
+     * @return null|int
      */
     public function id()
     {
@@ -89,7 +97,6 @@ trait GuardHelpers
     /**
      * Set the current user.
      *
-     * @param \Fx\HyperfHttpAuth\Contract\Authenticatable $user
      * @return $this
      */
     public function setUser(Authenticatable $user)
@@ -111,9 +118,6 @@ trait GuardHelpers
 
     /**
      * Set the user provider used by the guard.
-     *
-     * @param \Fx\HyperfHttpAuth\Contract\UserProvider $provider
-     * @return void
      */
     public function setProvider(UserProvider $provider)
     {

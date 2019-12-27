@@ -1,9 +1,16 @@
 <?php
+
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 
 namespace Fx\HyperfHttpAuth\Contract;
-
-use \Fx\HyperfHttpAuth\Contract\Authenticatable;
 
 interface Guard
 {
@@ -24,28 +31,27 @@ interface Guard
     /**
      * Get the currently authenticated user.
      *
-     * @return \Fx\HyperfHttpAuth\Contract\Authenticatable|null
+     * @return null|\Fx\HyperfHttpAuth\Contract\Authenticatable
      */
     public function user();
 
     /**
      * Get the ID for the currently authenticated user.
      *
-     * @return int|string|null
+     * @return null|int|string
      */
     public function id();
 
     /**
      * Get the name for the currently authenticated user.
      *
-     * @return string|null
+     * @return null|string
      */
     public function name();
 
     /**
      * Validate a user's credentials.
      *
-     * @param array $credentials
      * @return bool
      */
     public function validate(array $credentials = []);
@@ -54,7 +60,6 @@ interface Guard
      * Set the current user.
      *
      * @param \Fx\HyperfHttpAuth\Contract\Authenticatable $user
-     * @return void
      */
     public function setUser(Authenticatable $user);
 }
