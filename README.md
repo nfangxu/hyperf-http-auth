@@ -123,3 +123,5 @@ class IndexController extends AbstractController
 ## 更新说明
 
 - 2019-12-26: 添加 `Fx\HyperfHttpAuth\AuthenticateMiddleware` 中间件, 未认证通过会抛出 `Fx\HyperfHttpAuth\Exception\AuthenticationException`
+
+- 2019-12-27: 添加自动化测试
