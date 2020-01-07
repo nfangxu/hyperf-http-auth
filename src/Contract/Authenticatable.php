@@ -55,4 +55,18 @@ interface Authenticatable
      * @return string
      */
     public function getRememberTokenName();
+
+    /**
+     * Get the column name for the "username".
+     *
+     * @return string
+     */
+    public function getUsernameColumnName();
+
+    /**
+     * Get the user name.
+     *
+     * @return string
+     */
+    public function getUsername();
 }

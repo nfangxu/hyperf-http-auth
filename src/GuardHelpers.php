@@ -89,9 +89,16 @@ trait GuardHelpers
         }
     }
 
+    /**
+     * Get the name for the currently authenticated user.
+     *
+     * @return null|int
+     */
     public function name()
     {
-        return '';
+        if ($this->user()) {
+            return $this->user()->getUsername();
+        }
     }
 
     /**

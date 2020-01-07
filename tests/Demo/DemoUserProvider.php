@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace HyperfTest\Cases;
+namespace HyperfTest\Demo;
 
 use Fx\HyperfHttpAuth\Annotation\UserProviderAnnotation;
 use Fx\HyperfHttpAuth\Contract\Authenticatable;
@@ -21,7 +21,7 @@ use Fx\HyperfHttpAuth\Contract\UserProvider;
  *
  * @UserProviderAnnotation("test")
  */
-class TestUserProvider implements UserProvider
+class DemoUserProvider implements UserProvider
 {
     public $config;
 

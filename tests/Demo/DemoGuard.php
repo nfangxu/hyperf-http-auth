@@ -10,28 +10,29 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace HyperfTest\Cases;
+namespace HyperfTest\Demo;
 
 use Fx\HyperfHttpAuth\Annotation\GuardAnnotation;
 use Fx\HyperfHttpAuth\Contract\Authenticatable;
 use Fx\HyperfHttpAuth\Contract\StatefulGuard;
 use Fx\HyperfHttpAuth\Contract\UserProvider;
+use Fx\HyperfHttpAuth\GuardHelpers;
 
 /**
  * Class TestGuard.
  *
  * @GuardAnnotation("test")
  */
-class TestGuard implements StatefulGuard
+class DemoGuard implements StatefulGuard
 {
-    public $config;
+    use GuardHelpers;
 
-    public $provider;
+    public $config;
 
     public function __construct($config, UserProvider $provider)
     {
         $this->config = $config;
-        $this->provider = $provider;
+        $this->setProvider($provider);
     }
 
     public function attempt(array $credentials = [], $remember = false)
@@ -66,37 +67,13 @@ class TestGuard implements StatefulGuard
     {
     }
 
-    public function check()
-    {
-        return true;
-    }
-
-    public function guest()
+    public function validate(array $credentials = [])
     {
         return true;
     }
 
     public function user()
     {
-        return null;
-    }
-
-    public function id()
-    {
-        return null;
-    }
-
-    public function name()
-    {
-        return null;
-    }
-
-    public function validate(array $credentials = [])
-    {
-        return true;
-    }
-
-    public function setUser(Authenticatable $user)
-    {
+        return $this->user;
     }
 }

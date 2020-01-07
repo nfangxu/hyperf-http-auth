@@ -16,6 +16,9 @@ use Fx\HyperfHttpAuth\Config;
 use Fx\HyperfHttpAuth\Contract\Guard;
 use Fx\HyperfHttpAuth\Contract\UserProvider;
 use Fx\HyperfHttpAuth\HttpAuthManage;
+use HyperfTest\Demo\DemoGuard;
+use HyperfTest\Demo\DemoUserModel;
+use HyperfTest\Demo\DemoUserProvider;
 
 /**
  * @internal
@@ -27,22 +30,34 @@ class HttpAuthManageTest extends AbstractTestCase
     {
         $this->setAnnotations();
 
-        $this->assertEquals(TestGuard::class, Config::getAnnotation('test', Guard::class));
-        $this->assertEquals(TestUserProvider::class, Config::getAnnotation('test', UserProvider::class));
+        $this->assertEquals(DemoGuard::class, Config::getAnnotation('test', Guard::class));
+        $this->assertEquals(DemoUserProvider::class, Config::getAnnotation('test', UserProvider::class));
     }
 
     public function testGuard()
     {
         $guard = $this->auth()->guard();
 
-        $this->assertEquals(true, $guard instanceof TestGuard);
-        $this->assertEquals(true, $guard->provider instanceof TestUserProvider);
+        $this->assertEquals(true, $guard instanceof DemoGuard);
+        $this->assertEquals(true, $guard->getProvider() instanceof DemoUserProvider);
+    }
+
+    public function testIdentifierUser()
+    {
+        $guard = $this->auth()->guard();
+
+        $user = $this->user();
+
+        $guard->setUser($user);
+
+        $this->assertEquals(1, $guard->id());
+        $this->assertEquals('administrator', $guard->name());
     }
 
     protected function setAnnotations()
     {
-        Config::setAnnotation('test', TestGuard::class, Guard::class);
-        Config::setAnnotation('test', TestUserProvider::class, UserProvider::class);
+        Config::setAnnotation('test', DemoGuard::class, Guard::class);
+        Config::setAnnotation('test', DemoUserProvider::class, UserProvider::class);
     }
 
     protected function config()
@@ -73,5 +88,10 @@ class HttpAuthManageTest extends AbstractTestCase
     protected function auth()
     {
         return new HttpAuthManage($this->config());
+    }
+
+    protected function user()
+    {
+        return new DemoUserModel();
     }
 }

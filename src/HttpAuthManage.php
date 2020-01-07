@@ -115,8 +115,8 @@ class HttpAuthManage implements HttpAuthContract
             return make($class, [$config]);
         }
         throw new InvalidArgumentException(
-                "Authentication user provider [{$driver}] is not defined."
-            );
+            "Authentication user provider [{$driver}] is not defined."
+        );
     }
 
     /**
@@ -142,8 +142,8 @@ class HttpAuthManage implements HttpAuthContract
             return make($class, [$config, $this->createUserProvider($config['provider'] ?? null)]);
         }
         throw new InvalidArgumentException(
-                "Auth driver [{$config['driver']}] for guard [{$name}] is not defined."
-            );
+            "Auth driver [{$config['driver']}] for guard [{$name}] is not defined."
+        );
     }
 
     /**

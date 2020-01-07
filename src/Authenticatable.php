@@ -22,6 +22,33 @@ trait Authenticatable
     protected $rememberTokenName = 'remember_token';
 
     /**
+     * The column name of the "username".
+     *
+     * @var string
+     */
+    protected $usernameName = 'username';
+
+    /**
+     * Get the username of the identifier for the user.
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->{$this->getUsernameColumnName()};
+    }
+
+    /**
+     * Get the column name for the "username" token.
+     *
+     * @return string
+     */
+    public function getUsernameColumnName()
+    {
+        return $this->usernameName;
+    }
+
+    /**
      * Get the name of the unique identifier for the user.
      *
      * @return string

@@ -33,9 +33,6 @@ class AuthenticateMiddleware implements MiddlewareInterface
 
     /**
      * AuthenticateMiddleware constructor.
-     *
-     * @param ContainerInterface $container
-     * @param Contract\HttpAuthContract $auth
      */
     public function __construct(ContainerInterface $container, Contract\HttpAuthContract $auth)
     {

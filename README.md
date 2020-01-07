@@ -12,7 +12,7 @@
 ### 安装
 
 ```bash
-composer require fx/hyperf-http-auth
+composer require fx/hyperf-http-auth:"^1.1"
 ```
 
 ### 发布配置文件
