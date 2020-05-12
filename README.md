@@ -122,6 +122,8 @@ class IndexController extends AbstractController
 
 ## 更新说明
 
+- 2020-05-12: 修复 session guard 中引用 cookie 的问题, 该问题导致登录时无法使用 `记住我`
+
 - 2019-12-26: 添加 `Fx\HyperfHttpAuth\AuthenticateMiddleware` 中间件, 未认证通过会抛出 `Fx\HyperfHttpAuth\Exception\AuthenticationException`
 
 - 2019-12-27: 添加自动化测试
