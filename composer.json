@@ -30,7 +30,7 @@
         "hyperf/framework": "1.1.*",
         "hyperf/di": "1.1.*",
         "fx/eloquent-provider": "^1.0",
-        "fx/session-guard": "^1.0"
+        "fx/session-guard": "^1.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
