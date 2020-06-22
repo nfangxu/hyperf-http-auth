@@ -8,6 +8,8 @@
 
     * [fx/session-guard](https://github.com/nfangxu/hyperf-auth-session-guard) 使用 session 作为 guard ;
 
+- 2.0 版本开始, 需手动安装 [`fx/eloquent-provider`](https://github.com/nfangxu/hyperf-auth-eloquent-provider) 和 [`fx/session-guard`](https://github.com/nfangxu/hyperf-auth-session-guard)
+
 ## 使用
 ### 安装
 
