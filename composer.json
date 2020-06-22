@@ -6,7 +6,7 @@
         "php",
         "hyperf"
     ],
-    "description": "",
+    "description": "use auth in hyperf as in laravel",
     "autoload": {
         "psr-4": {
             "Fx\\HyperfHttpAuth\\": "src/"
