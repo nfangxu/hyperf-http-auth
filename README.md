@@ -131,3 +131,5 @@ class IndexController extends AbstractController
 - 2019-12-27: 添加自动化测试
 
 - 2020-01-07: 修复: `Fx\HyperfHttpAuth\Contract\Guard::name()`, 更新自动化测试
+
+- 2020-08-17: 修复收集器无法收集到自定义的注解, 该问题会导致 `Guard` 和 `UserProvider` 无法正常使用
