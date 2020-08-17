@@ -12,10 +12,12 @@ declare(strict_types=1);
 
 namespace Fx\HyperfHttpAuth;
 
+use Hyperf\Di\MetadataCollector;
+
 /**
  * Class Config.
  */
-class Config
+class Config extends MetadataCollector
 {
     /**
      * @var array

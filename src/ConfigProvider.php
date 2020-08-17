@@ -27,6 +27,9 @@ class ConfigProvider
                     'paths' => [
                         __DIR__,
                     ],
+                    'collectors' => [
+                        Config::class,
+                    ],
                 ],
             ],
             'publish' => [
