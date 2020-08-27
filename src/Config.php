@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Fx\HyperfHttpAuth;
 
 use Fx\HyperfHttpAuth\Annotation\GuardAnnotation;
@@ -60,7 +59,7 @@ class Config
             + AnnotationCollector::getClassesByAnnotation(UserProviderAnnotation::class);
 
         foreach ($classes as $value => $class) {
-            /** @var AuthAnnotation $class */
+            /* @var AuthAnnotation $class */
             self::setAnnotation($class->getName(), $value, $class->getAbstractClass());
         }
 

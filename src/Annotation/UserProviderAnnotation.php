@@ -9,10 +9,8 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace Fx\HyperfHttpAuth\Annotation;
 
-use Fx\HyperfHttpAuth\Config;
 use Fx\HyperfHttpAuth\Contract\AuthAnnotation;
 use Fx\HyperfHttpAuth\Contract\UserProvider;
 use Hyperf\Di\Annotation\AbstractAnnotation;
