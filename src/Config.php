@@ -12,12 +12,15 @@ declare(strict_types=1);
 
 namespace Fx\HyperfHttpAuth;
 
-use Hyperf\Di\MetadataCollector;
+use Fx\HyperfHttpAuth\Annotation\GuardAnnotation;
+use Fx\HyperfHttpAuth\Annotation\UserProviderAnnotation;
+use Fx\HyperfHttpAuth\Contract\AuthAnnotation;
+use Hyperf\Di\Annotation\AnnotationCollector;
 
 /**
  * Class Config.
  */
-class Config extends MetadataCollector
+class Config
 {
     /**
      * @var array
@@ -41,6 +44,10 @@ class Config extends MetadataCollector
      */
     public static function getAnnotation($name, $abstract)
     {
+        if (! self::$annotations) {
+            self::annotations();
+        }
+
         return self::$annotations[$abstract][$name] ?? '';
     }
 
@@ -49,6 +56,14 @@ class Config extends MetadataCollector
      */
     public static function annotations()
     {
+        $classes = AnnotationCollector::getClassesByAnnotation(GuardAnnotation::class)
+            + AnnotationCollector::getClassesByAnnotation(UserProviderAnnotation::class);
+
+        foreach ($classes as $value => $class) {
+            /** @var AuthAnnotation $class */
+            self::setAnnotation($class->getName(), $value, $class->getAbstractClass());
+        }
+
         return self::$annotations;
     }
 }

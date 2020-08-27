@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Fx\HyperfHttpAuth\Annotation;
 
 use Fx\HyperfHttpAuth\Config;
+use Fx\HyperfHttpAuth\Contract\AuthAnnotation;
 use Fx\HyperfHttpAuth\Contract\Guard;
 use Hyperf\Di\Annotation\AbstractAnnotation;
 
@@ -22,21 +23,20 @@ use Hyperf\Di\Annotation\AbstractAnnotation;
  * @Annotation
  * @Target("CLASS")
  */
-class GuardAnnotation extends AbstractAnnotation
+class GuardAnnotation extends AbstractAnnotation implements AuthAnnotation
 {
     /**
      * @var string
      */
     public $value;
 
-    public function __construct($value = null)
+    public function getAbstractClass(): string
     {
-        parent::__construct($value);
+        return Guard::class;
     }
 
-    public function collectClass(string $className): void
+    public function getName(): string
     {
-        parent::collectClass($className);
-        Config::setAnnotation($this->value, $className, Guard::class);
+        return $this->value;
     }
 }

@@ -12,13 +12,15 @@ declare(strict_types=1);
 
 namespace Fx\HyperfHttpAuth;
 
+use Fx\HyperfHttpAuth\Contract\HttpAuthContract;
+
 class ConfigProvider
 {
     public function __invoke(): array
     {
         return [
             'dependencies' => [
-                \Fx\HyperfHttpAuth\Contract\HttpAuthContract::class => \Fx\HyperfHttpAuth\HttpAuthManage::class,
+                HttpAuthContract::class => HttpAuthManage::class,
             ],
             'commands' => [
             ],
@@ -26,9 +28,6 @@ class ConfigProvider
                 'scan' => [
                     'paths' => [
                         __DIR__,
-                    ],
-                    'collectors' => [
-                        Config::class,
                     ],
                 ],
             ],
